@@ -1,0 +1,80 @@
+.logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 7.5vh;
+  width: 7.5vh;
+  border-radius: 50%;
+  margin-left: 1vh;
+  margin-top: 1vh;
+}
+
+img.logo:hover {
+  height: 8vh;
+  width: 8vh;
+}
+
+.nav-item {
+  font-weight: 100;
+  position: absolute;
+  top: 0vh;
+  color: #FFF;
+  font-family: 'lato',sans-serif;
+  font-size: 3vh;
+  letter-spacing: 0.5vh;
+  margin-top: 2.5vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  text-decoration: none;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+a.nav-item:hover {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+a.selected:hover {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+.nav-about {
+  margin-left: 10vh;
+}
+.nav-resume {
+  margin-left: 24vh;
+}
+.nav-projects {
+  margin-left: 41vh;
+}
+.nav-contact {
+  margin-left: 59vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-item {
+    font-size: 2.5vh;
+    letter-spacing: 0.5vh;
+  }
+  .nav-about {
+    margin-top: 1vh;
+    margin-left: 9vh;
+  }
+  .nav-resume {
+    margin-top: 5vh;
+    margin-left: 9vh;
+  }
+  .nav-projects {
+    margin-top: 1vh;
+    margin-left: 25vh;
+  }
+  .nav-contact {
+    margin-top: 5vh;
+    margin-left: 25vh;
+  }
+}
