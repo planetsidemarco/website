@@ -1,0 +1,31 @@
+.footer-div {
+  float: right;
+  width: 100vw;
+}
+
+.footer-text {
+  color: white;
+  text-align: center;
+  font-family: 'lato',sans-serif;
+  font-weight: 500;
+  font-size: 1.2vh;
+  letter-spacing: 0.2vh;
+  left: 0;
+  right: 0;
+  text-decoration: none;
+  margin-top: 1vh;
+}
+
+.footer-icon {
+  height: 4vh;
+  width: 4vh;
+  margin-top: 1vh;
+  margin-left: 2vh;
+}
+
+img.footer-icon:hover {
+  height: 4.2vh;
+  width: 4.2vh;
+  margin-right: -0.2vh;
+  margin-bottom: -0.2vh;
+}

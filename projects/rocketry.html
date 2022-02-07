@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Rocketry - Marco Tyler-Rodrigue</title>
+    <meta property="og:image" content="../media/marco.png">
+    <meta charset="utf-8" content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <link rel="icon" href="../media/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/fade.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+  </head>
+
+  <body>   
+    <div>
+      <!-- NAV -->
+      <div>
+        <a href="https://marcotyler-rodrigue.com/">
+          <img class="logo" src="../media/logo.png" alt="logo">
+        </a>  
+        <a href="https://marcotyler-rodrigue.com/about" class="nav-item nav-about fade-in-1">
+          <div>About</div>
+        </a>
+        <a href="https://marcotyler-rodrigue.com/resume" class="nav-item nav-resume fade-in-1">
+          <div>Resume</div>
+        </a>
+        <a href="https://marcotyler-rodrigue.com/projects" class="nav-item selected nav-projects fade-in-1">
+          <div>Projects</div>
+        </a>
+        <a href="https://marcotyler-rodrigue.com/contact" class="nav-item nav-contact fade-in-1">
+          <div>Contact</div>
+        </a>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="scroll-box">
+        <div class="content-div">
+          <div class="title-1-top fade-in-1">
+            Rocketry
+          </div>
+          <div id="wrapper">
+            <img class="image-centered fade-in-1" src="../media/rocketry_group.png" alt="Rocketry group">
+            <div class="paragraph fade-in-1 left-third" style="margin-top: 15vh;">
+              <p>
+                During my Honours final year at the University of Canterbury, I took the
+                <a class="hover-text" href="https://www.canterbury.ac.nz/courseinfo/GetCourseDetails.aspx?course=ENGR402&occurrence=20S2(C)&year=2020" target="_blank">ENGR402</a>
+                 Rocketry course and had an amazing time as Avionics and GNC Team Lead.
+                <br><br>
+                For this project, we worked in a small team of 8 students to design, build, and program a 100 mm rocket to be flown with canard roll-control.
+              </p>
+            </div>
+            <div class="paragraph fade-in-1 right-third" style="margin-top: 15vh;">
+              <p>
+                As Team Lead, I oversaw the design, manufacturing, and assembly of the electronic stack, along with the programming and testing of the roll-control software required for controlled flight.
+                <br><br>
+                This project required skills such as CAD design, programming, electrical soldering, component assembly, and workshop machining.
+              </p>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="paragraph fade-in-1 left-half">
+              <hr class="line-divide">
+              <p>Avionics Stack</p>
+              <p>
+                When beginning the project, we were tasked with designing an electronic stack layout with 3D-printed parts. The required parts to be considered in the design were:
+              </p>
+              <ul>
+                <li>
+                  <a>Flight Controller PCB (with XBee)</a>
+                </li>
+                <li>
+                  <a>2 Cell LiPo, Telemetrum, and Manual Deployment batteries</a>
+                </li>
+                <li>
+                  <a>Power switch</a>
+                </li>
+                <li>
+                  <a>Telemetrum</a>
+                </li>
+                <li>
+                  <a>900MHz and 433MHz Antennae</a>
+                </li>
+                <li>
+                  <a>External GPS Board</a>
+                </li>
+                <li>
+                  <a>Manual Deployment PCB</a>
+                </li>
+                <li>
+                  <a>Dragon Link receiver</a>
+                </li>
+                <li>
+                  <a>Associated wiring</a>
+                </li>
+              </ul>
+              <p>
+                We succeeded in the designing, manufacturing, and assembly of the avionics stack as shown, directly mounted to the actuator stack.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: center">
+              <img class="image-right-portrait fade-in-1" src="../media/avionics.png" alt="Rocketry group">
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="paragraph fade-in-1 left-half">
+              <hr class="line-divide">
+              <p>Activating Launch Controller</p>
+              <p>
+                Directly after the rocket launches, the launch controller is expected to turn on once escaping the guide rails. The activation requirements are:
+              </p>
+              <ul>
+                <li>
+                  <a>Distance calculated by IMU double integration > 6 m.</a>
+                </li>
+              </ul>
+              <p class="centered-text">
+                OR
+              </p>
+              <ul>
+                <li>
+                  <a>Launch time = T + 1 seconds.</a>
+                </li>
+              </ul>
+              <p>
+                For this system, an important aspect to consider is IMU integration drift, due to the use of IMU double integration for determining distance which causes significant drift over time without appropriate sensor fusion.
+              </p>
+              <p>
+                This issue with drift is solved by setting the acceleration variable to zero until launch is detected when IMU acceleration > 0.5 ms-2.
+              </p>       
+            </div>
+            <div style="display: flex; justify-content: center">
+              <img class="image-right-landscape fade-in-1" src="../media/launch_controller_activation.png" alt="Rocketry group">
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="paragraph fade-in-1 left-half">
+              <hr class="line-divide">
+              <p>Detecting Apogee & Restarting Data Log</p>
+              <p>
+                In the event of a failed parachute deployment and crash, there is a chance of a data log failure, resulting in a loss of data.
+              </p>
+              <p>
+                To ensure we did not lose all flight data in the event of a crash landing, we chose to detect apogee and restart the data log to save the launch data to apogee.
+              </p>
+              <p>
+                This was achieved by stopping the initial data log at apogee and starting a new log afterwards. This ensures that initial flight data leading up to apogee is saved to the SD card so that in the event of a crash, only the flight data between apogee and crashing may be lost.
+              </p>
+              <p>
+                The first was the 'Apogee Check Flag'.
+              </p>
+              <ul>
+                <li>
+                  <a>A max altitude variable is continuously updated along with a previous max altitude, separated by a 1 second delay.</a>
+                </li>
+                <li>
+                  <a>If both variables are equal, apogee check flag is set to true.</a>
+                </li>
+              </ul>
+              <p>
+                The second was the 'Apogee Confirmed Flag'.
+              </p>
+              <ul>
+                <li>
+                  <a>A max altitude variable is continuously updated along with a previous max altitude, separated by a 1 second delay.</a>
+                </li>
+                <li>
+                  <a>If both variables are equal, as well as the apogee check flag set to true, apogee confirmed flag is set to true.</a>
+                </li>
+                <li>
+                  <a>If not equal, apogee check flag is reset to false.</a>
+                </li>
+              </ul>
+              <p>
+                After both of these flags becomming set, the final flag set was the 'Apogee Reached'.
+              </p>
+              <ul>
+                <li>
+                  <a>Once both flags are set to true, apogee has been reached.</a>
+                </li>
+              </ul>        
+            </div>
+            <div style="display: flex; justify-content: center">
+              <img style="margin-bottom: 5vh;" class="image-right-landscape fade-in-1" src="../media/apogee_detection.png" alt="Rocketry group">
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <img class="image-right-landscape fade-in-1" src="../media/restarting_data_log.png" alt="Rocketry group">
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="paragraph fade-in-1 left-half">
+              <hr class="line-divide">
+              <p>Wind Tunnel Testing</p>
+              <p>
+                After assembling the rocket, an initial set of gains that had previous been used on another similar rocket were tested.
+              </p>
+              <p>
+                This gain set resulted in good control but the rise time could've been faster as it was ~1 second. The roll step response resulted as shown:
+              </p>
+              <img style="width: 100%;" src="../media/gain_set_1.png" alt="Initial gain set response" class="half-height-image-size">
+              <span>&nbsp;</span>
+              <p>
+                The gain set was then updated by reducing the proportional and increasing the derivative to try make the rise time faster.
+              </p>
+              <p>
+                This updated gain set resulted in good control and a faster rise time of ~0.5 seconds, but had a slight overshoot in consequence. The roll step response resulted as shown:
+              </p>
+              <img style="width: 100%;" src="../media/gain_set_2.png" alt="Initial gain set response" class="half-height-image-size">
+              <span>&nbsp;</span>
+              <p>
+                The following video displays roll-control within a wind tunnel as a step response is given every 10 seconds to rotate the rocket by 90 degrees.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: center; margin-bottom: 15vh;">
+              <video class="image-right-landscape fade-in-1" controls muted>
+                <source src="../media/roll_control_test.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="paragraph fade-in-1 left-half">
+              <hr class="line-divide">
+              <p>
+                Credit also goes to the rest of the team and supervisors that I worked with on this project. This includes:
+              </p>
+              <ul>
+                <li>
+                  <a>Chris Hann</a>
+                </li>
+                <li>
+                  <a>Tim Atkins</a>
+                </li>
+                <li>
+                  <a>Liam Sycamore</a>
+                </li>
+                <li>
+                  <a>Janitha Gunathilake</a>
+                </li>
+                <li>
+                  <a>Daniel de Gouw</a>
+                </li>
+                <li>
+                  <a>Chris Bull</a>
+                </li>
+                <li>
+                  <a>James Coleman</a>
+                </li>
+                <li>
+                  <a>Andrew Cho</a>
+                </li>
+                <li>
+                  <a>Andrew Limmer-Wood</a>
+                </li>
+                <li>
+                  <a>Michael Franks</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER -->
+        <div class="footer-div">
+          <a href="https://www.instagram.com/foodbymarco/"><img class="footer-icon" src="../media/instagram.png"></a>
+          <a href="https://www.facebook.com/Marco.Jack.Tyler.Rodrigue"><img class="footer-icon" src="../media/facebook.png"></a>
+          <a href="https://www.linkedin.com/in/marco-tyler-rodrigue/"><img class="footer-icon" src="../media/linkedin.png"></a> 
+          <a href="https://twitter.com/planetsidemarco"><img class="footer-icon" src="../media/twitter.png"></a> 
+          <a href="https://marcotyler-rodrigue.com/" class="footer-text"><div>&copy 2021 Marco Tyler-Rodrigue</div></a>
+        </div>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="../js/stars_dim.js"></script>
+
+  </body>
+</html>
