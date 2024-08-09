@@ -1,54 +1,54 @@
 .fade-in-1 {
-  -webkit-animation: fadeIn 2s linear;
-     -moz-animation: fadeIn 2s linear;
-      -ms-animation: fadeIn 2s linear;
-       -o-animation: fadeIn 2s linear;
-          animation: fadeIn 2s linear;
+  -webkit-animation: fadeIn 0.25s linear;
+     -moz-animation: fadeIn 0.25s linear;
+      -ms-animation: fadeIn 0.25s linear;
+       -o-animation: fadeIn 0.25s linear;
+          animation: fadeIn 0.25s linear;
 }
 
 .fade-in-2 {
   opacity: 0;
-  -webkit-animation: fadeIn 1s ease 0.75s forwards;
-     -moz-animation: fadeIn 1s ease 0.75s forwards;
-      -ms-animation: fadeIn 1s ease 0.75s forwards;
-       -o-animation: fadeIn 1s ease 0.75s forwards;
-          animation: fadeIn 1s ease 0.75s forwards;
+  -webkit-animation: fadeIn 0.25s ease 0.2s forwards;
+     -moz-animation: fadeIn 0.25s ease 0.2s forwards;
+      -ms-animation: fadeIn 0.25s ease 0.2s forwards;
+       -o-animation: fadeIn 0.25s ease 0.2s forwards;
+          animation: fadeIn 0.25s ease 0.2s forwards;
 }
 
 .fade-in-3 {
   opacity: 0;
-  -webkit-animation: fadeIn 1s ease 1.5s forwards;
-     -moz-animation: fadeIn 1s ease 1.5s forwards;
-      -ms-animation: fadeIn 1s ease 1.5s forwards;
-       -o-animation: fadeIn 1s ease 1.5s forwards;
-          animation: fadeIn 1s ease 1.5s forwards;
+  -webkit-animation: fadeIn 0.25s ease 0.4s forwards;
+     -moz-animation: fadeIn 0.25s ease 0.4s forwards;
+      -ms-animation: fadeIn 0.25s ease 0.4s forwards;
+       -o-animation: fadeIn 0.25s ease 0.4s forwards;
+          animation: fadeIn 0.25s ease 0.4s forwards;
 }
 
 .fade-in-4 {
   opacity: 0;
-  -webkit-animation: fadeIn 1s ease 2.25s forwards;
-     -moz-animation: fadeIn 1s ease 2.25s forwards;
-      -ms-animation: fadeIn 1s ease 2.25s forwards;
-       -o-animation: fadeIn 1s ease 2.25s forwards;
-          animation: fadeIn 1s ease 2.25s forwards;
+  -webkit-animation: fadeIn 0.25s ease 0.6s forwards;
+     -moz-animation: fadeIn 0.25s ease 0.6s forwards;
+      -ms-animation: fadeIn 0.25s ease 0.6s forwards;
+       -o-animation: fadeIn 0.25s ease 0.6s forwards;
+          animation: fadeIn 0.25s ease 0.6s forwards;
 }
 
 .fade-in-5 {
   opacity: 0;
-  -webkit-animation: fadeIn 1s ease 3s forwards;
-     -moz-animation: fadeIn 1s ease 3s forwards;
-      -ms-animation: fadeIn 1s ease 3s forwards;
-       -o-animation: fadeIn 1s ease 3s forwards;
-          animation: fadeIn 1s ease 3s forwards;
+  -webkit-animation: fadeIn 0.25s ease 0.8s forwards;
+     -moz-animation: fadeIn 0.25s ease 0.8s forwards;
+      -ms-animation: fadeIn 0.25s ease 0.8s forwards;
+       -o-animation: fadeIn 0.25s ease 0.8s forwards;
+          animation: fadeIn 0.25s ease 0.8s forwards;
 }
 
 .fade-in-6 {
   opacity: 0;
-  -webkit-animation: fadeIn 1s ease 3.75s forwards;
-     -moz-animation: fadeIn 1s ease 3.75s forwards;
-      -ms-animation: fadeIn 1s ease 3.75s forwards;
-       -o-animation: fadeIn 1s ease 3.75s forwards;
-          animation: fadeIn 1s ease 3.75s forwards;
+  -webkit-animation: fadeIn 0.25s ease 1.0s forwards;
+     -moz-animation: fadeIn 0.25s ease 1.0s forwards;
+      -ms-animation: fadeIn 0.25s ease 1.0s forwards;
+       -o-animation: fadeIn 0.25s ease 1.0s forwards;
+          animation: fadeIn 0.25s ease 1.0s forwards;
 }
 
 @keyframes fadeIn {
