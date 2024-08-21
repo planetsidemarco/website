@@ -55,6 +55,9 @@ a.selected:hover {
 .nav-contact {
   margin-left: 59vh;
 }
+.nav-testing {
+  margin-left: 76vh;
+}
 
 @media only screen and (max-width: 600px) {
   .nav-item {
@@ -76,5 +79,9 @@ a.selected:hover {
   .nav-contact {
     margin-top: 5vh;
     margin-left: 25vh;
+  }
+  .nav-testing {
+    margin-top: 1vh;
+    margin-left: 41vh;
   }
 }

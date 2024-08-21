@@ -129,6 +129,7 @@ a.hover-text:hover {
   float: left;
   margin-left: 2vw;
   margin-right: 2vw;
+  margin-top: 15vh;
 }
 
 .centered-third {
@@ -143,6 +144,7 @@ a.hover-text:hover {
   float: right;
   margin-left: 2vw;
   margin-right: 2vw;
+  margin-top: 15vh;
 }
 
 .image-centered {
