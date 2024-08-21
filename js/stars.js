@@ -7,17 +7,40 @@ const maxBrightness = 255;
 var speed = 0.01;
 let w;
 let h;
+let originalSpeed;
+let speedUpTimeoutId;
+let slowDownTimeoutId;
 
-window.onbeforeunload = function(){
-  for (let i=0; i<10; i++) {
-    speedUpStarsOnUnload(i);
-  }
-   
- function speedUpStarsOnUnload(i) {
-    setTimeout(function() {
-      speed = speed + speed*2;
-    }, 75 * i);
-  }
+window.onbeforeunload = function() {
+  // Store the original speed
+  originalSpeed = speed;
+
+  // Speed up the stars
+  speedUpStars();
+}
+
+function speedUpStars() {
+  let speedUpDuration = 2000; // 2 seconds
+
+  clearTimeout(speedUpTimeoutId);
+  clearTimeout(slowDownTimeoutId);
+
+  speedUpTimeoutId = setTimeout(function() {
+    // Start slowing down the stars
+    slowDownStars();
+  }, speedUpDuration);
+  speed = speed + (speed * 20);
+}
+
+function slowDownStars() {
+  let slowDownDuration = 1000; // 1 second
+
+  slowDownTimeoutId = setTimeout(function() {
+    // Reset the speed to the original value
+    speed = originalSpeed;
+  }, slowDownDuration);
+
+  speed = speed - (speed / 2);
 }
 
 const setCanvasExtents = () => {
