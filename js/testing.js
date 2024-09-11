@@ -1,4 +1,24 @@
 const API_URL = 'https://moon.planetsidemar.co';
+let socket;
+
+function connectWebSocket() {
+    socket = new WebSocket('wss://moon.planetsidemar.co/ws');
+    
+    socket.onmessage = function(event) {
+        if (event.data === 'update') {
+            fetchItems();
+        }
+    };
+
+    socket.onclose = function(event) {
+        console.log('WebSocket connection closed. Reconnecting...');
+        setTimeout(connectWebSocket, 1000);
+    };
+
+    socket.onerror = function(error) {
+        console.error('WebSocket error:', error);
+    };
+}
 
 async function fetchItems() {
     try {
@@ -39,7 +59,6 @@ async function createItem() {
             body: JSON.stringify({ name, description })
         });
         if (response.ok) {
-            fetchItems();
             document.getElementById('new-name').value = '';
             document.getElementById('new-description').value = '';
         } else {
@@ -62,9 +81,7 @@ async function editItem(id) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: newName, description: newDescription })
         });
-        if (response.ok) {
-            fetchItems();
-        } else {
+        if (!response.ok) {
             console.error('Error updating item');
         }
     } catch (error) {
@@ -79,18 +96,13 @@ async function deleteItem(id) {
         const response = await fetch(`${API_URL}/items/${id}`, {
             method: 'DELETE'
         });
-        if (response.ok) {
-            fetchItems();
-        } else {
+        if (!response.ok) {
             console.error('Error deleting item');
         }
     } catch (error) {
         console.error('Error deleting item:', error);
     }
 }
-
-// Fetch items when the page loads
-window.addEventListener('load', fetchItems);
 
 function updateImage() {
     const select = document.getElementById('image-select');
@@ -101,6 +113,7 @@ function updateImage() {
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     fetchItems();
+    connectWebSocket();
     
     const imageSelect = document.getElementById('image-select');
     imageSelect.addEventListener('change', updateImage);
