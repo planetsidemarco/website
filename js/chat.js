@@ -33,9 +33,8 @@ async function handleUserChange(event) {
 }
 
 async function fetchMessages() {
-    if (!currentUser) return;
     try {
-        const response = await fetch(`${API_URL}/messages?user_id=${currentUser}`);
+        const response = await fetch(`${API_URL}/messages`);
         const messages = await response.json();
         displayMessages(messages);
     } catch (error) {
@@ -50,7 +49,21 @@ function displayMessages(messages) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
         messageDiv.classList.add(message.sender_id === parseInt(currentUser) ? 'sent' : 'received');
-        messageDiv.textContent = message.content;
+        
+        const senderName = document.createElement('span');
+        senderName.classList.add('sender-name');
+        senderName.textContent = message.sender_name;
+        messageDiv.appendChild(senderName);
+        
+        const content = document.createElement('p');
+        content.textContent = message.content;
+        messageDiv.appendChild(content);
+        
+        const timestamp = document.createElement('span');
+        timestamp.classList.add('timestamp');
+        timestamp.textContent = new Date(message.timestamp).toLocaleString();
+        messageDiv.appendChild(timestamp);
+        
         container.appendChild(messageDiv);
     });
     container.scrollTop = container.scrollHeight;
@@ -67,8 +80,7 @@ async function sendMessage() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
-                sender_id: parseInt(currentUser), 
-                recipient_id: parseInt(currentUser), // For simplicity, sending to self
+                sender_id: parseInt(currentUser),
                 content: content 
             })
         });
@@ -106,23 +118,26 @@ async function createUser() {
 }
 
 async function deleteUser() {
-    if (!confirm('Are you sure you want to delete this item?')) return;
-
-    const user = document.getElementById('user-select');
+    if (!currentUser || !confirm('Are you sure you want to delete this user?')) return;
 
     try {
-        const response = await fetch(`${API_URL}/users/${user.value}`, {
+        const response = await fetch(`${API_URL}/users/${currentUser}`, {
             method: 'DELETE'
         });
-        if (!response.ok) {
-            console.error('Error deleting item');
+        if (response.ok) {
+            currentUser = null;
+            document.getElementById('user-select').value = '';
+            document.getElementById('message-container').innerHTML = '';
+            await fetchUsers();
+            await fetchMessages();
+        } else {
+            console.error('Error deleting user');
         }
     } catch (error) {
-        console.error('Error deleting item:', error);
+        console.error('Error deleting user:', error);
     }
 }
 
-// WebSocket connection for real-time updates
 let socket;
 
 function connectWebSocket() {
@@ -130,6 +145,9 @@ function connectWebSocket() {
     
     socket.onmessage = function(event) {
         if (event.data === 'update') {
+            fetchMessages();
+        } else if (event.data === 'user_deleted') {
+            fetchUsers();
             fetchMessages();
         }
     };
@@ -144,8 +162,8 @@ function connectWebSocket() {
     };
 }
 
-// Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
     fetchUsers();
+    fetchMessages();
     connectWebSocket();
 });

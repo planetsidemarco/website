@@ -3,7 +3,7 @@
 const canvas = document.getElementById("canvas");
 const c = canvas.getContext("2d");
 const totalStars = 1000;
-const maxBrightness = 255;
+var maxBrightness = document.getElementById("star-brightness").getAttribute("data-value");
 var speed = 0.01;
 let w;
 let h;
