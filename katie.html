@@ -45,7 +45,7 @@
           <div class="title-1-top fade-in-1">
             Countdown to seeing Katie
           </div>
-          <a id="countdown" class="subtitle fade-in-2 vertical-sub vertical-3 hover-text">Loading...</a>
+          <a id="countdown" class="subtitle fade-in-1 vertical-sub vertical-3">Loading...</a>
         </div>
         <!-- FOOTER -->
         <div class="footer-div">
@@ -61,15 +61,18 @@
 
     <script>
       function updateCountdown() {
-          const targetDate = new Date('2024-12-30');
-          const currentDate = new Date();
-          const diffTime = targetDate - currentDate;
-          const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-          document.getElementById('countdown').textContent = `L-${daysLeft} days`;
+        // Set target date in Mountain Time (UTC-7)
+        const targetDate = new Date('2024-12-30T00:00:00-07:00');
+        const currentDate = new Date();
+        const diffTime = targetDate - currentDate;
+        const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const prefix = daysLeft >= 0 ? 'L-' : 'L+';
+        document.getElementById('countdown').textContent = `${prefix}${Math.abs(daysLeft)} days`;
       }
+
       setInterval(updateCountdown, 1000);
       window.onload = updateCountdown;
-    </script>
+  </script>
 
     <script src="js/stars.js" id="star-brightness" data-value="255"></script>
   </body>
